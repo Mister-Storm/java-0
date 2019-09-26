@@ -15,34 +15,30 @@ public class DesafioApplication {
 	@Desafio("Fibonacci")
 	public static List<Integer> fibonacci() {
 
-		List<Integer> fibonacci = new ArrayList<Integer>();
-		fibonacci.add(0);
-		fibonacci.add(1);
-		while (!fibonacci.contains(350)) {
+		List<Integer> fib = new ArrayList<Integer>();
+		fib.add(0);
+		fib.add(1);
+		while (fib.size() <= 350) {
 			Integer valor;
-			valor = fibonacci.get(fibonacci.size()-1) + fibonacci.get(fibonacci.size());
-			fibonacci.add(valor);
+			valor = fib.get(fib.size()-1) + fib.get(fib.size()-2);
+			fib.add(valor);
 		}
-		return fibonacci;
+		return fib;
 	}
 
 	@Desafio("isFibonacci")
 	public static Boolean isFibonacci(Integer a) {
-
+		if (a == null) throw new IllegalArgumentException();
 		Boolean boleano;
 		boleano = Boolean.FALSE;
-		List<Integer> fibonacci = new ArrayList<Integer>();
-		fibonacci.add(0);
-		fibonacci.add(1);
-		while (fibonacci.get(fibonacci.size()).intValue() <= a.intValue()) {
-			Integer valor;
-			valor = fibonacci.get(fibonacci.size()) + fibonacci.get(fibonacci.size())-1;
-			fibonacci.add(valor);
-			if (fibonacci.get(fibonacci.size()).equals(a)) {
-				boleano = Boolean.TRUE;
-			}
+		List<Integer> fib = new ArrayList<Integer>();
+		fib = fibonacci();
+
+		for(int i: fib) {
+			if(i== a.intValue()) boleano = Boolean.TRUE;
 		}
 		return boleano;
+
 	}
 
 }
