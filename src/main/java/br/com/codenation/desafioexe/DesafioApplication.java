@@ -16,12 +16,13 @@ public class DesafioApplication {
 	public static List<Integer> fibonacci() {
 
 		List<Integer> fib = new ArrayList<Integer>();
-		fib.add(0);
-		fib.add(1);
-		while (fib.size() <= 350) {
-			Integer valor;
-			valor = fib.get(fib.size()-1) + fib.get(fib.size()-2);
-			fib.add(valor);
+		fib.add(new Integer(0));
+		fib.add(new Integer(1));
+		// while (fib.size() <= 350) {
+		while (fib.get(fib.size()-1).intValue() <= 350) {
+			int valor;
+			valor = fib.get(fib.size()-1).intValue() + fib.get(fib.size()-2).intValue();
+			fib.add(new Integer(valor));
 		}
 		return fib;
 	}
@@ -29,15 +30,13 @@ public class DesafioApplication {
 	@Desafio("isFibonacci")
 	public static Boolean isFibonacci(Integer a) {
 		if (a == null) throw new IllegalArgumentException();
-		Boolean boleano;
-		boleano = Boolean.FALSE;
-		List<Integer> fib = new ArrayList<Integer>();
+		Boolean bolRet;
+		bolRet = Boolean.FALSE;
+		List<Integer> fib;
 		fib = fibonacci();
 
-		for(int i: fib) {
-			if(i== a.intValue()) boleano = Boolean.TRUE;
-		}
-		return boleano;
+		for(int i: fib) if (i == a.intValue()) bolRet = Boolean.TRUE;
+		return bolRet;
 
 	}
 
